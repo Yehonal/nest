@@ -303,7 +303,7 @@ export class Logger implements LoggerService {
   static overrideLogger(logger: LoggerService | LogLevel[] | boolean) {
     if (Array.isArray(logger)) {
       Logger.logLevels = logger;
-      return this.staticInstanceRef?.setLogLevels(logger);
+      return this.staticInstanceRef?.setLogLevels?.(logger);
     }
     if (isObject(logger)) {
       if (logger instanceof Logger && logger.constructor !== Logger) {
